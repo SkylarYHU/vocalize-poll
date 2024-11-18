@@ -1122,7 +1122,7 @@ footer .social-links a:hover{
   .right-link .login, .right-link .sign-up{
     border: none;
     padding: 10px 0;
-    border-radius: none;
+    border-radius: 0;
     transition: all 0.3s ease-in-out;
   }
 
@@ -1154,6 +1154,7 @@ footer .social-links a:hover{
     background-color: #fffff4;
     color: #000;
     font-weight: 600;
+    transform: scale(1);
   }
 
   .nav-list .left-link a:hover, .logout-btn:hover {
