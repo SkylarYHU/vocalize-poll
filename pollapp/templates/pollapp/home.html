@@ -1,0 +1,61 @@
+{% extends "pollapp/base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="home-container">
+  <div class="hero">
+      <header class="big-title">
+          <h1>Vote Now</h1>
+          <h1>Share Your <span>Voice</span></h1>
+      </header>
+
+      <div class="call-link">
+          <a href="{% url 'create_poll' %}" class="create-btn">Create Poll</a>
+          <a href="{% url 'random_poll' %}" class="demo-btn">Live Demo</a>
+      </div>
+  </div>
+
+  <ul class="polls-list">
+      {% for poll in polls %}
+          <li class="poll-card {% cycle 'poll-card-one' 'poll-card-two' %}">
+              <a href="{% url 'polls_detail' poll.id %}" class="poll-title">{{ poll.title }}</a>
+
+              <ul>
+                  {% for choice in poll.choices.all %}
+                  <li class="poll-choice">
+                      <input type="radio" id="choice_{{ choice.id }}" name="choice" value="{{ choice.id }}" required>
+                      <label for="choice_{{ choice.id }}">{{ choice.choice_text }}</label>
+                  </li>
+                  {% endfor %}
+              </ul>
+
+              <a href="{% url 'polls_detail' poll.id %}" class="vote-link">Go to Vote &rarr;</a>
+          </li>
+      {% empty %}
+          <li>No polls available.</li>
+      {% endfor %}
+  </ul>
+</div>
+
+  <footer>
+    <div class="social-links">
+      <a href="mailto:skylarhyn@gmail.com" target="_blank" class="social-icon">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://skylarhu.atwebpages.com/" target="_blank" class="social-icon" rel="noopener noreferrer">
+        <i class="fas fa-globe"></i>
+      </a>
+      <a href="https://github.com/SkylarYHU" target="_blank" class="social-icon" rel="noopener noreferrer">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/skylar-hu/" target="_blank" class="social-icon" rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </div>
+
+    <p>&copy; 2024 Vocalize - Made by Skylar Hu</p>
+  </footer>
+
+{% endblock %}

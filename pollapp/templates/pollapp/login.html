@@ -1,0 +1,33 @@
+{% extends "pollapp/base.html" %}
+{% load static %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="login-card">
+        <h1>Login</h1>
+        <p>Enter your details to get sign in to your account</p>
+
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input type="text" name="username" id="username" placeholder="Username" required>
+            <input type="password" name="password" id="password" placeholder="Password" required>
+
+            {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <div class="{% if message.tags %}{{ message.tags }}-message{% endif %}">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <button type="submit">Sign in</button>
+        </form>
+        <p>Don't have an account? <a href="{% url 'register' %}" class="register-link">Register now</a></p>
+    </div>
+</div>
+
+{% endblock %}

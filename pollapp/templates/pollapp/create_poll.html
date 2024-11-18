@@ -1,0 +1,46 @@
+{% extends "pollapp/base.html" %}
+{% load static %}
+
+{% block title %}Create Poll{% endblock %}
+{% block content %}
+<div class="create-poll-container">
+    <div class="create-card">
+
+        <h1>Create a New Poll</h1>
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="title">
+      
+                <label for="id_title">Title</label>
+                {{ poll_form.title}}
+            </div>
+
+            <div id="choices-container" class="choices" data-initial-option-count="{{ initial_option_count }}">
+                <p>Answer Options</p>
+                <p id="option-limit-message" style="color: red; display: none;">Only up to 6 options can be added.</p>
+                
+                {% for choice_form in choice_forms %}
+                    <div class="choice-option">
+                        <div class="input-container">
+                            {{ choice_form.choice_text }}
+                            <span class="delete-option" onclick="removeChoice(this)">✕</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            
+                <button type="button" id="add-option-btn">+ Add Option</button>
+            </div>
+            
+            <div class="end-date">
+                <label for="id_end_date">End Date</label>
+                {{ poll_form.end_date }}
+            </div>
+            
+            <div class="buttons">
+                <button type="submit">Create Poll</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

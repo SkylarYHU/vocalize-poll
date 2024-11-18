@@ -1,0 +1,61 @@
+{% extends "pollapp/base.html" %}
+{% load static %}
+
+{% block title %}Poll List{% endblock %}
+{% block content %}
+
+<div class="polls-list-container">
+  <h1>All Polls</h1>
+
+  <form method="get" class="search-bar">
+    
+    <input type="text" name="q" id="search-input" placeholder="Search polls..." value="{{ query|default:'' }}">
+    <button class="clear-btn" id="clear-btn" type="button"><i class="fa-solid fa-xmark"></i></button>
+    <button type="submit" class="search-btn"><i class="fa fa-search"></i></button>
+  </form>
+
+  <div class="poll-list">
+    {% for poll in page_obj %}
+      <div class="poll-item">
+        <h2>{{ poll.title }}</h2>
+
+        <ul>
+          {% for choice in poll.choices.all %}
+          <li class="poll-choice">
+              <input type="radio" id="choice_{{ choice.id }}" name="choice" value="{{ choice.id }}" required>
+              <label for="choice_{{ choice.id }}">{{ choice.choice_text }}</label>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <div class="poll-info">
+          <a href="{% url 'polls_detail' poll.id %}">View Poll</a>
+          <p>Created by {{ poll.created_by }}</p>
+        </div>
+      </div>
+    {% empty %}
+    <p class="empty-message">No polls available.</p>
+    {% endfor %}
+  </div>  
+
+  <div class="pagination">
+    <form method="get" class="pagination-form">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">&lt;</a>
+        {% else %}
+            <span class="disabled">&lt;</span>
+        {% endif %}
+
+        <input type="number" name="page" value="{{ page_obj.number }}" min="1" max="{{ page_obj.paginator.num_pages }}" onchange="this.form.submit()" />
+        
+        <span>of {{ page_obj.paginator.num_pages }}</span>
+        
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">&gt;</a>
+        {% else %}
+            <span class="disabled">&gt;</span>
+        {% endif %}
+    </form>
+  </div>
+</div>
+{% endblock %}

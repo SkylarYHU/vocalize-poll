@@ -1,0 +1,59 @@
+{% extends "pollapp/base.html" %}
+{% load static %}
+
+{% block title %}Poll Results{% endblock %}
+{% block content %}
+<div class="poll-result-container">
+    <div class="result-card">
+       
+        <h1>{{ poll.title }}</h1>
+        <div class="result-chart">
+            <canvas id="doughnutChart"></canvas>
+        </div>
+   
+        <p>*Hover over the pie chart to see the percentage of each option.</p>
+        <div class="btn-group">
+            <a href="{% url 'polls_detail' poll.id %}" class="back-btn">Back to Poll</a>
+            <button onclick="document.getElementById('shareModal').style.display = 'block'" class="share-btn">Share Poll</button>
+        </div>
+
+        <div class="share-modal" id="shareModal">
+            <button onclick="closeShareModal()" class="close-btn"><i class="fa-solid fa-rectangle-xmark"></i></button>
+
+            <div class="share-card">
+                <div class="share-section share-left">
+                    <h3>Share via link</h3>
+                    <div class="share-link">
+                        <input type="text" id="shareLink" value="{{ share_link }}" readonly>
+                        <button id="copy-btn" onclick="copyToClipboard()"><i class="fa-solid fa-copy"></i></button>
+                    
+                    </div>
+                </div>
+            
+                <div class="share-section share-right">
+                    <div class="social-icons">
+                        <a href="https://twitter.com/share?url={{ share_link }}" target="_blank" class="social-btn twitter">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_link }}" target="_blank" class="social-btn facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                        <a href="https://reddit.com/submit?url={{ share_link }}" target="_blank" class="social-btn reddit">
+                            <i class="fa-brands fa-reddit"></i>
+                        </a>
+                    </div>                    
+                </div>
+
+            </div>
+        </div>
+        
+    </div>  
+</div> 
+    <script>
+        const choiceData = {{ choice_data|safe }};
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/charts.js' %}"></script> 
+  
+{% endblock %}
+

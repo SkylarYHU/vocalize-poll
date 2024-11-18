@@ -1,0 +1,41 @@
+{% extends "pollapp/base.html" %}
+{% load static %}
+
+{% block title %}Poll Detail{% endblock %}
+{% block content %}
+<div class="poll-detail-container">
+  <div class="poll-detail-card">
+    <h1>{{ poll.title }}</h1>
+    <div class="detail-info">
+      <p>
+        <em>Created by {{ poll.created_by }}</em> /
+        <em>Ends <span>{{ poll.end_date|date:"M d, Y H:i" }}</span></em>
+      </p>
+    </div>
+
+    <form method="post">
+      {% csrf_token %}
+      <ul>
+        {% for choice in poll.choices.all %}
+          <li class="poll-choice">
+            <input type="radio" id="choice_{{ choice.id }}" name="choice" value="{{ choice.id }}" required>
+            <label for="choice_{{ choice.id }}">{{ choice.choice_text }}</label>
+          </li>
+        {% endfor %}
+      </ul>
+      <div class="btn-group">
+        <button type="submit" class="vote-btn">Vote</button>
+        <a href="{% url 'poll_results' poll.id %}" class="result-btn">View results</a>
+      </div>
+    </form>
+  </div>
+
+  {% if poll.created_by == request.user %}
+  <form action="{% url 'delete_poll' poll.id %}" method="post" onsubmit="return confirm('Are you sure you want to delete this poll?');" class="delete-form">
+    {% csrf_token %}
+    <button type="submit" class="delete-btn">Remove Poll</button>
+  </form>
+  {% endif %}
+</div>
+{% endblock %}
+
