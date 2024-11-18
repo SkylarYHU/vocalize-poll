@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 # from django.contrib.messages import constants as messages
 
@@ -144,14 +144,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# if DEBUG:
-#     STATICFILES_DIRS = [BASE_DIR / 'static']
 
-
-import os
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 if DEBUG:
     STATIC_URL = '/static/'
