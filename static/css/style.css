@@ -1119,6 +1119,14 @@ footer .social-links a:hover{
     margin-left: 0;
   }
 
+  .right-link .login, .right-link .sign-up{
+    border: none;
+    padding: 10px 0;
+    border-radius: none;
+    transition: all 0.3s ease-in-out;
+  }
+
+
   .nav-list a, .logout-btn {
     width: 100%; 
     text-align: center;
@@ -1142,12 +1150,17 @@ footer .social-links a:hover{
     text-align: center;
   }
 
-  .nav-list .left-link a:hover, .logout-btn:hover {
+  .right-link .login:hover, .right-link .sign-up:hover{
     background-color: #fffff4;
     color: #000;
     font-weight: 600;
   }
 
+  .nav-list .left-link a:hover, .logout-btn:hover {
+    background-color: #fffff4;
+    color: #000;
+    font-weight: 600;
+  }
 
   .menu-toggle {
     display: block;
@@ -1567,6 +1580,7 @@ footer .social-links a:hover{
     font-size: 1.6rem;
     margin-bottom: 1rem;
   }
+
   
   .poll-list{
     gap: 0.8rem;
