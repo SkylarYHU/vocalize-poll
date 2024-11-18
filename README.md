@@ -4,6 +4,14 @@ Vocalize is a dynamic polling website where users can create, vote, and share po
 
 - **Live Site**: [https://vocalize.up.railway.app/](https://vocalize.up.railway.app/)
 
+## Screenshots
+![homepage](Screenshots/homepage.png)
+![Login Page](Screenshots/login.png)
+![Register Page](Screenshots/register.png)
+![Create Poll Page](Screenshots/create-poll.png)
+![Poll List Page](Screenshots/poll-list.png)
+![Poll Detail Page](Screenshots/poll-detail.png)
+![Poll Results Page](Screenshots/poll-result.png)
 
 ## Features
 - **User Authentication**: Login and register functionality.
