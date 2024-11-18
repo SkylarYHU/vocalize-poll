@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
-# from django.contrib.messages import constants as messages
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -149,8 +149,11 @@ if DEBUG:
     MEDIA_URL = '/media/'
     STATICFILES_DIRS = [BASE_DIR / 'static']
     MEDIA_ROOT = BASE_DIR / 'media'
-    STATIC_ROOT = BASE_DIR / "staticfiles_dev"
 else:
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME', None)
+
+    print("AWS_STORAGE_BUCKET_NAME:", AWS_STORAGE_BUCKET_NAME)
+    
     if not AWS_STORAGE_BUCKET_NAME:
         raise ValueError("AWS_STORAGE_BUCKET_NAME must be set in production")
     
