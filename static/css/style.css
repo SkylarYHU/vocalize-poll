@@ -172,14 +172,14 @@ nav {
 
 /* footer */
 footer{
-  width: 90%;
-  position: fixed;
+  width: 100%;
+  /* position: fixed; */
   bottom: 1rem;
   left: 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 3rem;
+  margin-top: 2rem;
 }
 
 footer .social-links{
