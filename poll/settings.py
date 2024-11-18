@@ -144,8 +144,6 @@ USE_I18N = True
 USE_TZ = True
 
 
-
-
 if DEBUG:
     STATIC_URL = '/static/'
     MEDIA_URL = '/media/'
