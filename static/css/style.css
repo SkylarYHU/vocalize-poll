@@ -1110,6 +1110,10 @@ footer .social-links a:hover{
     gap: 0;
   }
 
+  .right-link{
+    gap:0;
+  }
+
   .right-link .user-avatar img{
     display: none;
   }
@@ -1125,7 +1129,6 @@ footer .social-links a:hover{
     border-radius: 0;
     transition: all 0.3s ease-in-out;
   }
-
 
   .nav-list a, .logout-btn {
     width: 100%; 
