@@ -71,11 +71,4 @@ python manage.py runserver
 ### 8. Access the Website
 Open your browser and navigate to: http://127.0.0.1:8000.
 
-## License
-This project is available for personal and educational use under a Non-Commercial Use License Agreement.
-
-You may not use this work for commercial purposes without prior written permission from the creator.
-
-For details or inquiries, please contact: skylarhyn@gmail.com.
-
 
