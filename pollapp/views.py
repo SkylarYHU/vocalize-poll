@@ -138,7 +138,7 @@ def polls_detail(request, poll_id):
 
 def poll_results(request, poll_id):
     poll = get_object_or_404(Poll, pk=poll_id)
-    share_link = request.build_absolute_uri(f'/poll/{poll_id}/')
+    share_link = request.build_absolute_uri(f'/{poll_id}/')
     choices = poll.choices.all()
     choice_data = [{'text': choice.choice_text, 'votes': choice.votes} for choice in choices]
     
