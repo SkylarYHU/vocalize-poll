@@ -1585,6 +1585,13 @@ footer .social-links a:hover{
     margin-bottom: 1rem;
   }
 
+  .search-bar .search-btn{
+    margin-left: -60px;
+  }
+
+  .clear-btn {
+    right: 75px;
+  }
   
   .poll-list{
     gap: 0.8rem;
@@ -1597,7 +1604,6 @@ footer .social-links a:hover{
   .poll-item .poll-choice label{
     font-size: 13px;
   }
-
 
   .poll-info {
     flex-direction: column;
